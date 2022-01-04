@@ -1,0 +1,17 @@
+flask_mongoengine==1.0.0
+hyper==0.5.0
+netaddr==0.8.0
+cachetools==4.2.4
+Flask_Login==0.5.0
+mitmproxy==7.0.4
+pymongo==3.12.2
+mongoengine==0.23.1
+requests==2.26.0
+Flask_HTTPAuth==4.5.0
+Flask-Session==0.4.0
+urllib3==1.26.7
+Flask==1.1.2
+Flask_SocketIO==5.1.1
+gevent==21.8.0
+gevent-websocket==0.10.1
+redis==4.0.2

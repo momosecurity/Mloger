@@ -1,0 +1,21 @@
+# 代码目录简介
+
+# 主要功能位于server目录下
+
+
+├── front    # 前端
+│   ├── dist           # 编译后前端项目
+│   └── src            # 源码
+│       ├── assets              # 资源
+│       ├── components          # 页面组件
+│       └── utils
+│
+└── server   # 后端
+    ├── config          # 配置文件
+    ├── db              # 数据库配置与连接
+    ├── log             # 日志
+    ├── proxy           # 代理脚本启动
+    ├── task_server     # 常驻服务
+    ├── utils           # 一些工具类
+    ├── web_server      # web服务
+    └── app.py          # 主功能入口
