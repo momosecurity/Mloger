@@ -1,6 +1,6 @@
 # Mloger
 `HTTP/HTTPS/websocket/tcp` `Debugging Proxy` `Replay attack` `Security testing` 
-[中文](/)
+[中文](/README.md)
 
 ## Introduction
 
