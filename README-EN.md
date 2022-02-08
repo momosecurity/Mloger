@@ -46,9 +46,9 @@ pip3 install -r requirements.txt
 ```bash
 mongo mongodb://mloger:mloger_pwd@localhost:27017/mloger server/db/mongo_create_indexes.js
 ```
-1. Proxy config[Optional]  
+4. Proxy config[Optional]  
 You can check the configs for HTTP, socks, and port in `server/config/config.ini` and make sure the port is not currently used.
-1. Starting the back-end
+5. Starting the back-end
 ```bash
 python3 app.py
 ```
