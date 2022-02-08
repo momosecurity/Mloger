@@ -1,5 +1,6 @@
 # Mloger
 `HTTP/HTTPS/websocket/tcp` `抓包` `重放` `安全测试` 
+[English](/README-EN.md)
 ## 简介
 **Mloger**是基于**mitmproxy**开发的安全测试平台，为陌陌安全内部mloger的开源简化版本，用于各业务线安全测试工作。  
 相较于burp，本项目支持socks5代理用于测试tcp协议，tcp协议常见于im通信和游戏场景。http/https协议的抓包与重放功能与burp基本一致。
