@@ -12,14 +12,29 @@
 |:-----|:------|---------------|-----------|
 | vue2 | Flask | mongodb、redis | mitmproxy |
 
-## 编译前端
+## 部署
+## docker部署
+1. 创建数据库目录，用于数据持久化存储  
+更换目录需要同步修改`docker-compose.yml`文件
+```
+mkdir /tmp/mongo
+mkdir /tmp/redis
+```
+2. 启动docker
+```
+docker-compose up
+```
+
+## 手动部署
+### 编译前端[可选]
+修改前端源码后需要再次编译，若无修改可跳过。
 ```
 cd front
 npm install
 npm run build
 ```
 
-## 配置服务端
+### 配置服务端
 1. 安装mongodb、redis  
 - 安装redis时需注意添加密码后启动
 - 安装mongodb后进入交互式shell，创建数据库并为其创建用户
@@ -48,6 +63,7 @@ python3 app.py
 ```
 如果一切顺利的话，那么你可以在该ip的8000端口看到web页面了。
 ![img.png](front/src/assets/screenshot/首页.png)
+
 ## 使用
 可以参考[使用手册](front/src/assets/usage.md)。
 

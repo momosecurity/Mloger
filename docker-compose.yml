@@ -1,0 +1,46 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+      - "8081:8081"
+      - "8082:8082"
+    depends_on:
+      - redis
+      - mongo
+    environment:
+      PROJECT_ENV: prod
+    logging:
+      driver: json-file
+      options:
+        max-size: "1m"
+        max-file: "2"
+  redis:
+    image: "redis:alpine"
+    restart: always
+    command: redis-server --requirepass redis_password
+    volumes:
+      - "/tmp/redis:/data"
+    logging:
+      driver: json-file
+      options:
+        max-size: "1m"
+        max-file: "2"
+  mongo:
+    image: "mongo:5.0.6"
+    restart: always
+    volumes:
+      - "./server/db/mongo_create_indexes.js:/docker-entrypoint-initdb.d/mongo_create_indexes.js"
+      - "/tmp/mongo:/data/db"
+    environment:
+      MONGO_INITDB_DATABASE: mloger
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root_pwd
+    logging:
+      driver: json-file
+      options:
+        max-size: "1m"
+        max-file: "2"

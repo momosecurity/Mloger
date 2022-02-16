@@ -1,3 +1,4 @@
+try{db.createUser({user:"mloger",pwd:"mloger_pwd",roles:[{"role":"readWrite","db":"mloger"}]})}catch(e){print(e)}
 try{ db.getCollection("apis").createIndex({"status":1},{background:1, unique:false })}catch(e){print(e)}
 try{ db.getCollection("apis").createIndex({"host":1},{background:1, unique:false })}catch(e){print(e)}
 try{ db.getCollection("apis").createIndex({"path":1},{background:1, unique:false })}catch(e){print(e)}
