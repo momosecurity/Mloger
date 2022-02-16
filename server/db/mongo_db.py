@@ -14,9 +14,7 @@ LOCAL_MONGO_DB = "mloger"
 
 # 线上mongo配置
 MLOGER_REPLSET_MONGO_HOST = [
-    "mongo_replset_001",
-    "mongo_replset_002",
-    "mongo_replset_003"
+    "mongo",
 ]
 MONGO_REPLSET_PORT = 27017
 MONGO_REPLSET_DB = "mloger"

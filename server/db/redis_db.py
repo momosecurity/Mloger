@@ -16,8 +16,9 @@ LOCAL_REDIS_CONFIG = {
 }
 
 REDIS_CONFIG = {
-    "host": "",
+    "host": "redis",
     "port": 6379,
+    "password": "redis_password",
     "max_connections": 100,
     "socket_timeout": 5,
     "socket_connect_timeout": 5,
