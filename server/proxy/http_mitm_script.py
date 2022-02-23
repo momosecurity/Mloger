@@ -155,7 +155,7 @@ def response(flow: http.HTTPFlow) -> None:
                     flow.request.host + '_' + flow.request.path + '_' + str(flow.request.timestamp_start) + '_' + str(
                         flow.request.timestamp_end), None)
                 content = flow.response.get_content(strict=False)
-                if len(flow.response.content) > 1048576 or flow.request.path.endswith(file_type_black_list):
+                if len(content) > 1048576 or flow.request.path.endswith(file_type_black_list):
                     content = b'Large response or binary files are not stored.'
                 crypto, crypto_data = handle_res_crypto(flow.request.host, content)
                 data = {
