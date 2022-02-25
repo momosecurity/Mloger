@@ -45,10 +45,8 @@ def request(flow: http.HTTPFlow) -> None:
         try:
             if flow.request:
                 user_name = get_user_name_by_ip_for_redis(client_ip)
-                if 'Accept-Encoding' in flow.request.headers and 'gzip' in flow.request.headers['Accept-Encoding']:
-                    flow.request.headers['Accept-Encoding'] = flow.request.headers['Accept-Encoding'].replace('gzip',
-                                                                                                              '')
-                content = flow.request.content.decode('latin-1')
+                                raw_content = flow.request.get_content(strict=False)
+                content = raw_content.decode('latin-1')
                 crypto, crypto_data = handle_crypto(flow.request.host, flow.request.path, content)
                 data = {
                     "method": flow.request.method,
@@ -58,7 +56,7 @@ def request(flow: http.HTTPFlow) -> None:
                     "path": flow.request.path,
                     "http_version": flow.request.http_version,
                     "headers": dict(flow.request.headers),
-                    "content": flow.request.content.decode("utf-8", "ignore"),
+                    "content": raw_content.decode("utf-8", "ignore"),
                     "timestamp_start": flow.request.timestamp_start,
                     "timestamp_end": flow.request.timestamp_end,
                     "client_ip": client_ip,
@@ -109,7 +107,7 @@ def request(flow: http.HTTPFlow) -> None:
                                 "path": flow.request.path,
                                 "http_version": flow.request.http_version,
                                 "headers": dict(flow.request.headers),
-                                "content": flow.request.content.decode("utf-8", "ignore"),
+                                "content": intercept_data['request_edited'].encode().decode("utf-8", "ignore"),
                                 "timestamp_start": flow.request.timestamp_start,
                                 "timestamp_end": flow.request.timestamp_end,
                                 "client_ip": client_ip,
@@ -214,7 +212,8 @@ def response(flow: http.HTTPFlow) -> None:
                                 flow.response.content = intercept_data['response_edited'].encode()
                             else:
                                 flow.response.content = intercept_data['response_edited']
-                            crypto, crypto_data = handle_res_crypto(flow.request.host, flow.response.content)
+                            content = flow.response.get_content(strict=False)
+                            crypto, crypto_data = handle_res_crypto(flow.request.host, content)
                             data = {
                                 "req_id": req_id,
                                 "http_version": flow.response.http_version,

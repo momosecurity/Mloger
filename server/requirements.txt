@@ -10,6 +10,7 @@ requests==2.26.0
 Flask_HTTPAuth==4.5.0
 Flask-Session==0.4.0
 urllib3==1.26.7
+itsdangerous==2.0.1
 Flask==1.1.2
 Flask_SocketIO==5.1.1
 gevent==21.8.0
