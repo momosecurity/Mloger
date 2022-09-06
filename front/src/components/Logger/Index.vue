@@ -333,7 +333,7 @@ export default {
             }
             that.showTable(data);
           } catch (err) {
-            that.$Message.error(err);
+            console.log(err);
           }
           if (that.wsFullRequest.length >= 500 && that.wsFullRequest.length % 100 === 0) {
             that.$Message.warning(`浏览器缓存数据已经达到${that.wsFullRequest.length}, 建议清屏!!!`);
